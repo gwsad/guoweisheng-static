@@ -1,0 +1,30 @@
+.ui-toast-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+  background: transparent;
+}
+
+.ui-toast {
+  background: rgba(0, 0, 0, .6);
+  border-radius: 8px;
+  max-width: 50%;
+  padding: 15px 20px;
+  overflow: hidden;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  animation: scaleIn .4s;
+}
+
+.ui-toast span {
+  display: block;
+  line-height: 40px;
+  font-size: 30px;
+  color: #fff;
+  word-break: break-all;
+}

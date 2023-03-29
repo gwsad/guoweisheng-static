@@ -1,0 +1,18 @@
+body {
+  color: #000;
+  font-size: 28px;
+  background: #fff;
+  font-family: PingFangSC-Regular, PingFang SC, Hiragino Sans GB, Microsoft YaHei UI, Microsoft YaHei, Source Han Sans CN, sans-serif;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+body,
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
+#app {
+  height: 100%;
+}
