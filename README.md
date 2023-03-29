@@ -11,13 +11,23 @@ npm run prod prod 生产环境
  vite + typescript + vue
 ```
 
-## 常规项目代码目录
+## 常规项目代码目录（所有组件以 es-button 样式方式引入）
 
 ```
 ├── components
-│   ├── PageLoading //页面loading
-│   │    ├── index.ts
-│   │    └── index.vue
+│   ├── button //按钮
+│   │    └── src
+│   │         └──enter.vue // html
+│   │         └──props.ts  // 传参
+│   │    └── index.ts // 组件入口文件
+│   ├── checkbox / 多选框
+│   ├── input // 输入框
+│   ├── pagination // 分页
+│   ├── preset // 预置输入框
+│   ├── radio // 单选框
+│   ├── select // 选择器
+│   ├── switch // 开关
+│   ├── textBtn // 文字按钮
 ├── css
 │   ├── app.scss  //引用程序主样式
 │   ├── index.scss  //入口样式
