@@ -25,6 +25,7 @@ import EsButton from './components/button'
 import EsTextBtn from './components/textBtn'
 import EsRadio from './components/radio'
 import EsSelect from './components/select'
+import EsDatePicker from './components/datePicker'
 export {
   EsRadio,
   EsInput,
@@ -33,7 +34,8 @@ export {
   EsButton,
   EsTextBtn,
   EsPagination,
-  EsSelect
+  EsSelect,
+  EsDatePicker
 }
 
 

@@ -16,8 +16,10 @@
     "@vue/compiler-sfc": "^3.2.31",
     "autoprefixer": "^10.4.14",
     "element-plus": "^2.2.35",
-    "mitt": "^3.0.0",
+    "eslint-plugin-vue": "^9.7.0",
+    "encryptlong": "3.1.4",
     "husky": "^7.0.4",
+    "mitt": "^3.0.0",
     "postcss": "^8.4.21",
     "sass": "^1.56.1",
     "sass-loader": "^13.2.0",
@@ -25,7 +27,6 @@
     "unplugin-vue-define-options": "^1.1.1",
     "vite": "^2.8.4",
     "vite-plugin-html": "^2.0.7",
-    "eslint-plugin-vue": "^9.7.0",
     "vue": "^3.2.31",
     "vue-tsc": "^0.31.4"
   },
@@ -35,5 +36,6 @@
   },
   "peerDependencies": {
     "element-plus": "^2.2.35"
-  }
+  },
+  "dependencies": {}
 }

@@ -1,2 +1,3 @@
-export const eesaStaticJs = "1.0.0"
-export const eesaStaticCss = "1.0.0"
+const packageConfig = require('./package.json')
+export const eesaStaticJs = packageConfig.version
+export const eesaStaticCss = packageConfig.version
