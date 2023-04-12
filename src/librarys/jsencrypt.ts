@@ -8,19 +8,21 @@ export function encrypt(config) {
   const timestamp = new Date().getTime();
   let params = [];
 
-  config.params !== undefined &&
-    (params = [].concat(handleParams(config.params)));
-  config.data !== undefined && (params = [].concat(handleParams(config.data)));
-  // 去重复项
-  params = [...new Set(params)];
-  // 根据首字母排序
-  params = params.sort((a, b) => {
-    return (a + "").localeCompare(b + "");
-  });
+  if (config.params !== undefined || config.data !== undefined) {
 
+    config.params !== undefined &&
+      (params = [].concat(handleParams(config.params)));
+    config.data !== undefined && (params = [].concat(handleParams(config.data)));
+    // 去重复项
+    params = [...new Set(params)];
+    // 根据首字母排序
+    params = params.sort((a, b) => {
+      return (a + "").localeCompare(b + "");
+    });
+  }
   // 拼装成字符串
   let _params = params.join("&");
-  _params = _params + `&timestamp=${timestamp}`;
+  _params = _params + (params.length === 0 ? '' : '&') + `timestamp=${timestamp}`;
 
   // 创建JSEncrypt实例
   const encrypt = new JSEncrypt();
