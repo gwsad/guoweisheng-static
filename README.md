@@ -37,6 +37,7 @@ npm run prod prod 生产环境
 │   ├── ui-page-loading.scss //页面底部loading样式
 ├── librarys
 │   ├── fun.ts   // 函数方法
+│   ├── jsencrypt.ts   // 参数加密方法
 │   ├── store.ts   //localStorage、sessionStorage 方法
 │   ├── utils.ts   // 公共方法
 │   ├── validate.ts   // 校验规则
