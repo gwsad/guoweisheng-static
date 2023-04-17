@@ -8,11 +8,19 @@ export function encrypt(config) {
   const timestamp = new Date().getTime();
 
   let params = [];
-  // 判断是否有传参
+
+  // 判断是否有传参 有则进行加密
   if (config.params !== undefined || config.data !== undefined) {
+    if (config.url.indexOf('?') !== -1) {
+      config.url.split('?')[1].split('&').forEach(item => {
+        params.push(item)
+      })
+    }
     config.params !== undefined &&
-      (params = [].concat(handleParams(config.params)));
-    config.data !== undefined && (params = [].concat(handleParams(config.data)));
+      (params = params.concat(handleParams(config.params)));
+    config.data !== undefined && (params = params.concat(handleParams(config.data)));
+
+    (config.params !== undefined && config.data !== undefined) && (params = [].concat(handleParams(config.params)).concat(handleParams(config.data)));
     // 去重复项
     params = [...new Set(params)];
     // 根据首字母排序
@@ -25,8 +33,6 @@ export function encrypt(config) {
   // 拼装成字符串
   let _params = params.join("&");
   _params = _params + (params.length === 0 ? '' : '&') + `timestamp=${timestamp}`;
-
-  console.log(_params);
   // 创建JSEncrypt实例
   const encrypt = new JSEncrypt();
   // 调用加密方法
@@ -44,10 +50,10 @@ const handleParams = params => {
   if (Object.keys(params) && Object.keys(params).length !== 0) {
     const res = [];
     for (const key in params) {
-      if (!params[key] && params[key] !== 0) {
-        console.log('参数为空')
+      if (!params[key] && (params[key] !== 0 || params[key] !== false)) {
+        console.error('参数为空')
       } else {
-        res.push(key + "=" + (typeof params[key] === 'object' ? JSON.stringify(params[key]) : params[key]) || '')
+        res.push(key + "=" + (typeof params[key] === 'object' ? JSON.stringify(params[key]).toString().split('"').join('').split(':').join('=') : params[key]) || '')
       }
     }
     return res;

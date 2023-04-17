@@ -1,6 +1,6 @@
 {
   "name": "@guoweisheng/static",
-  "version": "1.0.22",
+  "version": "1.0.24",
   "main": "src/main.ts",
   "scripts": {
     "serve": "vite",
