@@ -1,3 +1,4 @@
+node_modules
 .DS_Store
 /dist
 *.sh
@@ -18,3 +19,5 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+pnpm-lock.yaml
+```

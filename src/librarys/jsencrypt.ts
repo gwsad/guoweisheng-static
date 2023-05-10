@@ -1,6 +1,10 @@
-import { JSEncrypt } from "encryptlong";
 
-/* 使用encryptlong加密方法，在自己项目中从后端获取的publicKey存入localStorage，encrypt会从本地获取密钥进行加密 */
+// 参数加密，先过滤参数来源data或者params，然后进行md5对参数加密，生成较短的密文，最后使用公钥加密
+import { md5 } from "../compression/md5.js"
+import { JSEncrypt } from "../compression/jsencrypt.js"
+
+
+/* 使用encrypt加密方法，在自己项目中从后端获取的publicKey存入localStorage，encrypt会从本地获取密钥进行加密 */
 
 export function encrypt(config) {
   const _public = window.localStorage.getItem("publicKey");
@@ -32,16 +36,13 @@ export function encrypt(config) {
   }
   // 拼装成字符串
   let _params = params.join("&");
-  _params = _params + (params.length === 0 ? '' : '&') + `timestamp=${timestamp}`;
+  _params = (params.length === 0 ? '' : md5(_params) + '&') + `timestamp=${timestamp}`;
   // 创建JSEncrypt实例
-  const encrypt = new JSEncrypt();
+  const Encrypt = new JSEncrypt();
   // 调用加密方法
-  encrypt.setPublicKey(_public);
+  Encrypt.setPublicKey(_public);
 
-  const _result =
-    _params.length > 100
-      ? encrypt.encryptLong(_params)
-      : encrypt.encrypt(_params);
+  const _result = Encrypt.encrypt(_params)
   return _result;
 }
 
@@ -50,10 +51,11 @@ const handleParams = params => {
   if (Object.keys(params) && Object.keys(params).length !== 0) {
     const res = [];
     for (const key in params) {
-      if (!params[key] && (params[key] !== 0 || params[key] !== false)) {
-        console.error('参数为空')
+      if (!params[key] && (params[key] !== 0 && params[key] !== false)) {
+        console.error('@guoweisheng/static提示：参数' + key + '为空');
       } else {
-        res.push(key + "=" + (typeof params[key] === 'object' ? JSON.stringify(params[key]).toString().split('"').join('').split(':').join('=') : params[key]) || '')
+        // 如果是字符串就删除空格 如果是对象就转成字符串
+        res.push(key + "=" + (typeof params[key] === 'string' ? params[key].split(' ').join('') : typeof params[key] === 'object' ? JSON.stringify(params[key]).toString().split('"').join('').split(':').join('=').split(' ').join('') : params[key]) || '')
       }
     }
     return res;

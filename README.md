@@ -28,6 +28,9 @@ npm run prod prod 生产环境
 │   ├── select // 选择器
 │   ├── switch // 开关
 │   ├── textBtn // 文字按钮
+├── compression
+│   ├── jsencrypt // 压缩完的加密方法
+│   ├── md5 // md5加密
 ├── css
 │   ├── app.scss  //引用程序主样式
 │   ├── index.scss  //入口样式
