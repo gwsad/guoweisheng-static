@@ -1,15 +1,11 @@
 import './css/index.scss'
 import Store from './librarys/store'
 import validate from './librarys/validate'
-import showToast from './plugins/showToast'
-import lazyLoad from './plugins/lazyLoad'
 export * from './librarys/utils'
 
 export {
   Store,
-  validate,
-  lazyLoad,
-  showToast
+  validate
 }
 
 // 导出组件

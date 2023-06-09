@@ -1,9 +1,7 @@
 ## Eesa-ui-vue3
 
-npm install
-npm run dev dev 开发环境
-npm run test test 测试环境
-npm run prod prod 生产环境
+## 安装项目依赖
+pnpm install
 
 ## 技术框架
 
@@ -45,12 +43,6 @@ npm run prod prod 生产环境
 │   ├── utils.ts   // 公共方法
 │   ├── validate.ts   // 校验规则
 ├── main.ts       //打包入口文件
-├── plugins
-│   ├── lazyLoad
-│   │    └── index.ts  //懒加载
-│   │── showToast           //提示框
-│   │    ├── index.ts
-│   │    └── index.vue
 
 ```
 ##  plugins 插件使用
