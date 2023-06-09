@@ -48,9 +48,6 @@ npm run prod prod 生产环境
 ├── plugins
 │   ├── lazyLoad
 │   │    └── index.ts  //懒加载
-│   ├── loading
-│   │    ├── index.ts   //loading显示
-│   │         └── index.vue
 │   │── showToast           //提示框
 │   │    ├── index.ts
 │   │    └── index.vue
@@ -72,44 +69,5 @@ app.use(showModal)
  $hideLoading()  //页面隐藏loading
 ```
 
-##  lazyLoad 使用
-```
-  main.ts
-
-  const app = createApp(App as any)
-  app.directive("lazy", {
-    mounted(el, binding, vnode) {
-      setTimeout(() => {
-        lazyLoad.init(el, binding, vnode)
-      })
-    }
-  })
-
-  <template>
-    <div
-      class="ui-lazyLoad-pic"
-      v-lazy
-      data-src="image"
-    >
-    </div>
-  </template>
-
-  <script lang="ts">
-
-     import { defineComponent, onMounted, onBeforeUnmount } from "vue"
-     import { lazyLoad } from "jlfront/static"
-     export default defineComponent({
-       setup() {
-         onMounted(() => {
-            LazyLoad.start()
-         })
-         onBeforeUnmount(() => {
-            LazyLoad.remove()
-         })
-       }
-     })
-  </script>
-
-```
 
 

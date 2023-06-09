@@ -1,8 +1,6 @@
-import ElementPlus from 'element-plus'
 import './css/index.scss'
 import Store from './librarys/store'
 import validate from './librarys/validate'
-import loading from './plugins/loading'
 import showToast from './plugins/showToast'
 import lazyLoad from './plugins/lazyLoad'
 export * from './librarys/utils'
@@ -11,7 +9,6 @@ export {
   Store,
   validate,
   lazyLoad,
-  loading,
   showToast
 }
 

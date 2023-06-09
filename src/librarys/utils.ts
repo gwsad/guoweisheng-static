@@ -6,7 +6,7 @@ interface CallbackFn {
 const ua = navigator.userAgent
 
 function prefixZero(val: string | number): string {
-  if (val < 10) {
+  if (Number(val) < 10) {
     return "0" + val
   } else {
     return "" + val

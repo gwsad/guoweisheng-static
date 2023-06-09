@@ -52,7 +52,7 @@ const handleParams = params => {
     const res = [];
     for (const key in params) {
       if (!params[key] && (params[key] !== 0 && params[key] !== false)) {
-        console.error('@guoweisheng/static提示：参数' + key + '为空');
+        console.warn('@guoweisheng/eesa-components提示：参数' + key + '为空');
       } else {
         // 如果是字符串就删除空格 如果是对象就转成字符串
         res.push(key + "=" + (typeof params[key] === 'string' ? params[key].split(' ').join('') : typeof params[key] === 'object' ? JSON.stringify(params[key]).toString().split('"').join('').split(':').join('=').split(' ').join('') : params[key]) || '')
