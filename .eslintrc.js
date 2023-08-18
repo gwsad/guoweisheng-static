@@ -1,74 +1,20 @@
 module.exports = {
-  root: true,
+  root: true,  // 表示该配置文件是根配置文件，不再向上查找其他配置文件
   env: {
-    node: true,
-    'vue/setup-compiler-macros': true
-  },
-  globals: {
-    // Ref sugar (take 2)
-    $: "readonly",
-    $$: "readonly",
-    $ref: "readonly",
-    $shallowRef: "readonly",
-    $computed: "readonly",
-
-    // index.d.ts
-    // global.d.ts
-    Fn: "readonly",
-    PromiseFn: "readonly",
-    RefType: "readonly",
-    LabelValueOptions: "readonly",
-    EmitType: "readonly",
-    TargetContext: "readonly",
-    ComponentElRef: "readonly",
-    ComponentRef: "readonly",
-    ElRef: "readonly",
-    global: "readonly",
-    ForDataType: "readonly",
-    ComponentRoutes: "readonly",
-
-    // script setup
-    defineProps: "readonly",
-    defineEmits: "readonly",
-    defineExpose: "readonly",
-    withDefaults: "readonly"
+    node: true,  // 启用 Node.js 环境的全局变量和语法
+    browser: true,  // 启用浏览器环境的全局变量和语法
   },
   extends: [
-    "plugin:vue/vue3-essential",
-    "eslint:recommended",
+    'eslint:recommended',  // 使用 ESLint 推荐的基本规则
+    'plugin:@typescript-eslint/recommended',  // 使用 TypeScript 推荐的规则
   ],
-  parser: "vue-eslint-parser",
+  parser: '@typescript-eslint/parser',  // 指定解析器
   parserOptions: {
-    parser: "@typescript-eslint/parser",
-    ecmaVersion: 2020,
-    sourceType: "module",
-    jsxPragma: "React",
-    ecmaFeatures: {
-      jsx: true
-    }
+    ecmaVersion: 2021,  // 指定 ECMAScript 版本
+    sourceType: 'module',  // 使用 ECMAScript 模块
   },
-  overrides: [
-    {
-      files: ["*.ts", "*.vue"],
-      rules: {
-        "no-undef": "off"
-      }
-    },
-    {
-      files: ["*.vue"],
-      parser: "vue-eslint-parser",
-      parserOptions: {
-        parser: "@typescript-eslint/parser",
-        extraFileExtensions: [".vue"],
-        ecmaVersion: "latest",
-        ecmaFeatures: {
-          jsx: true
-        }
-      },
-      rules: {
-        "no-undef": "off"
-      }
-    }
+  plugins: [
+    '@typescript-eslint',  // 使用 TypeScript 插件
   ],
   rules: {
     "vue/no-v-html": "off",

@@ -21,3 +21,5 @@ yarn-error.log*
 *.sw?
 pnpm-lock.yaml
 ```
+node_modules
+node_modules
