@@ -2,7 +2,7 @@
   <button class="es-button"
     :class="{ 'es-button_default': type === 'default', 'es-button_primary': type === 'primary', 'es-button_default_disabled': disabled && type === 'default' }"
     :disabled="disabled" :loading="loading" :type="type" @click="onClick">
-    <slot></slot>
+    <slot/>
   </button>
 </template>
 <script lang="ts" setup>

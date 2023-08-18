@@ -4,10 +4,7 @@
   "main": "src/main.js",
   "private": false,
   "scripts": {
-    "serve": "vite",
-    "build:dev": "vite build",
-    "build:beta": "vue-tsc --noEmit && vite build",
-    "build:prod": "vue-tsc --noEmit && vite build"
+    "build": "vite build"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",

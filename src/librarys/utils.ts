@@ -1,12 +1,7 @@
-
-interface CallbackFn {
-  <T>(data: T): void;
-}
-
 const ua = navigator.userAgent
 
 function prefixZero(val: string | number): string {
-  if (val < 10) {
+  if (Number(val) < 10) {
     return "0" + val
   } else {
     return "" + val
@@ -62,7 +57,7 @@ function isApp(): boolean {
  * @param wait {Number}  执行间隔，单位是毫秒（ms）
  * @return {Function}     返回一个“节流”函数
  */
-function throttle(func: CallbackFn, wait): CallbackFn {
+function throttle(func, wait) {
   let lastTime = null
   let timeout = null
   return function () {
@@ -89,7 +84,7 @@ function throttle(func: CallbackFn, wait): CallbackFn {
  * @param { Number } wait  执行间隔，单位是毫秒（ms）
  * @return {Function}     返回一个“防抖”函数
  */
-function debounce(func: CallbackFn, wait: number): CallbackFn {
+function debounce(func, wait: number) {
   let lastTime = null
   let timeout = null
   return function () {
@@ -161,18 +156,6 @@ function getQueryParams(val: string): string {
   } else {
     return result
   }
-}
-function getPassiveValue(): any {
-  let supportsPassiveOption = false
-  try {
-    addEventListener("test", null, Object.defineProperty({}, 'passive', {
-      get: function () {
-        supportsPassiveOption = true
-      }
-    }));
-  } catch (e) { }
-  //{passive: true} 就不会调用 preventDefault 来阻止默认滑动行为
-  return supportsPassiveOption ? { passive: true, capture: true } : true
 }
 function trim(text): string {
   if (text) {
@@ -252,7 +235,6 @@ export {
   parseTime,
   getFontSize,
   getAndroidV,
-  getPassiveValue,
   trim,
   getQueryParams,
   getUniqueId,

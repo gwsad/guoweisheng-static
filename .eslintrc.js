@@ -40,11 +40,24 @@ module.exports = {
         math: "always"
       }
     ],
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        argsIgnorePattern: "^_",
+        varsIgnorePattern: "^_"
+      }
+    ],
     "no-unused-vars": [
       "error",
       {
         argsIgnorePattern: "^_",
         varsIgnorePattern: "^_"
+      }
+    ],
+    "prettier/prettier": [
+      "error",
+      {
+        endOfLine: "auto"
       }
     ]
   }
