@@ -37,7 +37,6 @@ export function encrypt(config) {
   }
   // 拼装成字符串
   let _params = params.join("&");
-  console.log('params', _params)
   _params = (params.length === 0 ? '' : md5(_params) + '&') + `timestamp=${timestamp}`;
   const Encrypt = new JSEncrypt();
   // 创建JSEncrypt实例
