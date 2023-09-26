@@ -31,17 +31,18 @@ export function encrypt(config) {
     params = params.sort((a, b) => {
       return (a + "").localeCompare(b + "");
     });
+
   } else {
     config.url.indexOf('?') !== -1 && (params = config.url.split('?')[1].split('&'))
   }
   // 拼装成字符串
   let _params = params.join("&");
+  console.log('params', _params)
   _params = (params.length === 0 ? '' : md5(_params) + '&') + `timestamp=${timestamp}`;
-  // 创建JSEncrypt实例
   const Encrypt = new JSEncrypt();
+  // 创建JSEncrypt实例
   // 调用加密方法
   Encrypt.setPublicKey(_public);
-
   const _result = Encrypt.encrypt(_params)
   return _result;
 }
@@ -52,10 +53,20 @@ const handleParams = params => {
     const res = [];
     for (const key in params) {
       if (!params[key] && (params[key] !== 0 && params[key] !== false)) {
-        console.warn('@guoweisheng/eesa-components提示：参数' + key + '为空');
+        console.warn('eesaComponent提示：参数' + key + '为空');
       } else {
         // 如果是字符串就删除空格 如果是对象就转成字符串
-        res.push(`${key}=${typeof params[key] === 'string' ? params[key].split(' ').join('') : typeof params[key] === 'object' ? JSON.stringify(params[key]).split('"').join('').split(':').join('=').split(' ').join('').replaceAll('https=','https:').replaceAll('http=','http:') : params[key]}` || '')
+        if( typeof params[key] === 'string' ){
+          res.push(`${key}=${params[key].split(' ').join('')}` || '')
+        }else if( typeof params[key] === 'object' ){
+          if( Array.isArray(params[key]) ){
+            res.push(`${key}=[${transformArray(params[key])}]` || '')
+          }else{
+            res.push(`${key}=${transformArray(params[key])}` || '')
+          }
+        }else{
+          res.push(`${key}=${params[key]}` || '')
+        }
       }
     }
     return res;
@@ -63,3 +74,15 @@ const handleParams = params => {
     return [];
   }
 };
+function transformArray(arr) {
+  return arr.map(obj => {
+    const keyValuePairs = [];
+    for (const key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        obj[key] !== undefined && keyValuePairs.push(`${key}=${Array.isArray(obj[key]) ? '[' + transformArray(obj[key]) + ']' : obj[key] }`);
+      }
+    }
+    return typeof obj === 'object' ? `{${keyValuePairs.join(',').split(' ').join('').replaceAll('https=','https:').replaceAll('http=','http:')}}` : obj;
+  });
+}
+

@@ -33,7 +33,7 @@ export default defineConfig({
       }
     },
     lib: {
-      entry: 'src/main.ts',
+      entry: 'src/main.js',
       name: 'EesaStatic',
       formats: ['umd']
     },
