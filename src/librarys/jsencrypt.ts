@@ -28,9 +28,10 @@ export function encrypt(config) {
     // 去重复项
     params = [...new Set(params)];
     // 根据首字母排序
-    params = params.sort((a, b) => {
-      return (a + "").localeCompare(b + "");
-    });
+    // params = params.sort((a, b) => {
+    //   return (a + "").localeCompare(b + "");
+    // });
+    params.sort(sortByFirstLetter);
 
   } else {
     config.url.indexOf('?') !== -1 && (params = config.url.split('?')[1].split('&'))
@@ -73,6 +74,7 @@ const handleParams = params => {
     return [];
   }
 };
+// 递归拼接参数
 function transformArray(arr) {
   return arr.map(obj => {
     const keyValuePairs = [];
@@ -84,4 +86,18 @@ function transformArray(arr) {
     return typeof obj === 'object' ? `{${keyValuePairs.join(',').split(' ').join('').replaceAll('https=','https:').replaceAll('http=','http:')}}` : obj;
   });
 }
+// // 自定义比较函数，根据首字母进行排序
+function sortByFirstLetter(a, b) {
+  const firstLetterA = a[0].toLowerCase(); // 获取第一个字符并转为小写
+  const firstLetterB = b[0].toLowerCase(); // 获取第一个字符并转为小写
+
+  if (firstLetterA < firstLetterB) {
+    return -1;
+  } else if (firstLetterA > firstLetterB) {
+    return 1;
+  } else {
+    return 0;
+  }
+}
+
 
