@@ -6,7 +6,7 @@
 <script lang="ts" setup>
 import { computed } from "vue";
 import { basicProps } from "../src/props";
-import { ElRadio } from 'element-plus'
+import { ElRadio } from 'element-plus/es'
 const props = defineProps(basicProps)
 const emit = defineEmits(['update:modelValue', 'change'])
 

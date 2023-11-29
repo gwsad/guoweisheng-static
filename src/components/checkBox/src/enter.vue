@@ -5,7 +5,7 @@
 <script lang="ts" setup>
 import { computed } from "vue";
 import { basicProps } from "../src/props";
-import { ElCheckbox } from 'element-plus'
+import { ElCheckbox } from 'element-plus/es'
 const props = defineProps(basicProps)
 const emit = defineEmits(['update:modelValue', 'change'])
 

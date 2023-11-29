@@ -225,6 +225,17 @@ function parseTime(time, cFormat) {
   return time_str
 }
 
+// 解析路由中的参数
+// 获取url参数
+function getUrlParameters(url: string) {
+  const urlParams = new URLSearchParams(url);
+  const parameters = {};
+  urlParams.forEach((value, key) => {
+    parameters[key] = value;
+  });
+  return parameters ;
+}
+
 export {
   prefixZero,
   toFixed,
@@ -240,5 +251,6 @@ export {
   getUniqueId,
   queryStringify,
   throttle,
-  debounce
+  debounce,
+  getUrlParameters
 }

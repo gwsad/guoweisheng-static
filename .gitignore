@@ -20,6 +20,7 @@ yarn-error.log*
 *.sln
 *.sw?
 pnpm-lock.yaml
+.npmrc
 ```
 node_modules
 node_modules

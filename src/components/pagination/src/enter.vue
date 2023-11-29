@@ -8,7 +8,7 @@
 </template>
 <script lang="ts" setup>
 import { basicProps } from "../src/props";
-import { ElPagination } from 'element-plus'
+import { ElPagination } from 'element-plus/es'
 const props = defineProps(basicProps)
 const emit = defineEmits(['sizeChange', 'currentChange', 'prevClick', 'nextClick'])
 

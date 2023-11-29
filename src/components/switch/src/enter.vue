@@ -6,7 +6,7 @@
 <script lang="ts" setup>
 import { computed } from "vue";
 import { basicProps } from "../src/props";
-import { ElSwitch } from 'element-plus'
+import { ElSwitch } from 'element-plus/es'
 const props = defineProps(basicProps)
 const emit = defineEmits(['update:modelValue', 'change'])
 

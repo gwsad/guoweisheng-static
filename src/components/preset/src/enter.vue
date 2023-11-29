@@ -8,7 +8,7 @@
 <script lang="ts" setup>
 import { computed } from "vue";
 import { basicProps } from "../src/props";
-import { ElInput } from 'element-plus'
+import { ElInput } from 'element-plus/es'
 const props = defineProps(basicProps)
 const emit = defineEmits(['update:modelValue', 'blur', 'focus', 'clear', 'input', 'change'])
 

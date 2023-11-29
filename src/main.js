@@ -1,5 +1,5 @@
 
-import ElementPlus from 'element-plus'
+import ElementPlus from 'element-plus/es'
 import './css/index.scss'
 import Store from './librarys/store'
 import validate from './librarys/validate'

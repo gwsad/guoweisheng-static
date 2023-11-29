@@ -14,6 +14,12 @@ const isEmail = (text: string): boolean => {
   const pattern = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/
   return pattern.test(text)
 }
+
+const isIp = (text: any): boolean => {
+  const pattern = /^(\d+)\.(\d+)\.(\d+)\.(\d+)$/;
+  return pattern.test(text)
+}
+
 /**
  * 验证银行卡
  * @param {string} text 银行卡
@@ -39,5 +45,6 @@ export default {
   isMessageCode,
   isEmail,
   isBankCard,
-  isIdCard
+  isIdCard,
+  isIp
 }
