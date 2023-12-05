@@ -9,10 +9,6 @@
 ```
 ├── components
 │   ├── button //按钮
-│   │    └── src
-│   │         └──enter.vue // html
-│   │         └──props.ts  // 传参
-│   │    └── index.ts // 组件入口文件
 │   ├── checkbox / 多选框
 │   ├── input // 输入框
 │   ├── pagination // 分页
@@ -31,13 +27,17 @@
 │   ├── ui-layout.scss  //布局样式
 │   ├── ui-show-loading.scss  //公共ui样式
 │   ├── ui-page-loading.scss //页面底部loading样式
+├── hooks
+│   ├── use-namespace // 组件命名统一规范
 ├── librarys
 │   ├── fun.ts   // 函数方法
 │   ├── jsencrypt.ts   // 参数加密方法
 │   ├── store.ts   //localStorage、sessionStorage 方法
 │   ├── utils.ts   // 公共方法
 │   ├── validate.ts   // 校验规则
+│   ├── vueShared.ts   // @vueShared（用于JS数据类型判断）
+├── props
+│   ├── runTime.ts  // 对传入的props优化类型，方便管理
 ├── main.ts       //打包入口文件
-
-
+├── CHANGELOG.md     // 更新日志文件
 ```

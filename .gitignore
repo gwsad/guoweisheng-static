@@ -1,4 +1,3 @@
-node_modules
 .DS_Store
 /dist
 *.sh
@@ -22,5 +21,4 @@ yarn-error.log*
 pnpm-lock.yaml
 .npmrc
 ```
-node_modules
 node_modules

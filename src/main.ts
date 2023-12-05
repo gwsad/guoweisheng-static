@@ -11,12 +11,12 @@ export {
 }
 
 // 导出组件
+import EsButton from './components/button'
 import EsInput from './components/input'
 import EsSwitch from './components/switch'
 import EsPreset from './components/preset'
 import EsPagination from './components/pagination'
 // import EsCheckBox from './components/checkbox'
-import EsButton from './components/button'
 import EsTextBtn from './components/textBtn'
 import EsRadio from './components/radio'
 import EsSelect from './components/select'

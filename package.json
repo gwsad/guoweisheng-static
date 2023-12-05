@@ -1,7 +1,7 @@
 {
   "name": "@guoweisheng/static",
-  "version": "1.1.21",
-  "main": "src/main.js",
+  "version": "2.0.0",
+  "main": "src/main.ts",
   "private": false,
   "scripts": {
     "build": "cross-env NODE_ENV=production vite build"
@@ -10,7 +10,17 @@
     "type": "git",
     "url": "https://github.com/gwsad/guoweisheng-static.git"
   },
+  "peerDependencies": {
+    "@ctrl/tinycolor": "^3.4.1",
+    "@element-plus/icons-vue": "^2.3.1",
+    "lodash-unified": "^1.0.2"
+  },
   "devDependencies": {
+    "@ctrl/tinycolor": "^3.4.1",
+    "@element-plus/icons-vue": "^2.3.1",
+    "lodash-unified": "^1.0.2",
+    "@vue/shared": "^3.2.37",
+    "@vueuse/core": "^9.1.0",
     "@babel/core": "^7.15.0",
     "@babel/preset-env": "^7.15.0",
     "@babel/register": "^7.15.3",
@@ -19,6 +29,7 @@
     "@vitejs/plugin-vue": "^2.2.2",
     "@vue/compiler-sfc": "^3.2.31",
     "element-plus": "2.2.27",
+
     "cross-env": "5.2.0",
     "eslint-plugin-vue": "^9.7.0",
     "mitt": "^3.0.0",

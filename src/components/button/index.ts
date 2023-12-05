@@ -1,4 +1,4 @@
 // @ts-ignore
-import EsButton from './src/enter.vue'
+import EsButton from './src/button.vue'
 export default EsButton;
 

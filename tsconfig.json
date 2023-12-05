@@ -31,6 +31,6 @@
     "src/**/*.ts",
     "src/**/*.d.ts",
     "src/**/*.tsx",
-    "src/**/*.vue"
-, "src/main.js"  ]
+    "src/**/*.vue",
+    "src/main.ts"  ]
 }
