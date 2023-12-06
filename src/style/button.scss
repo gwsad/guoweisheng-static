@@ -1,0 +1,7 @@
+@use 'sass:map';
+@use './common/mixins' as *;
+@use './common/var' as *;
+
+@include b(button) {
+  background: $color-theme;
+}

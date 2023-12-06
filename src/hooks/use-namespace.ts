@@ -13,7 +13,7 @@ const statePrefix = 'is-'
  * description: B(block) E(element) M(modifier)
  * 书写规范:
  *    组件就是一个模块 block
- *    连接 blockSuffix 用 -双下划线; 模块后缀，一般用于区分不同模块，如 button、input、table、grid 等
+ *    连接 blockSuffix 用 - 单横线; 模块后缀，一般用于区分不同模块，如 button、input、table、grid 等
  *    连接 element 用 __双下划线; (表示 block 内更细粒度的元素，一般以布局或功能区分这些元素。)
  *    连接 modifier 用 --单下划线;（用于标记 block 或 element 的不同版本或状态）
  *    B、E、M 尽量都只有1个

@@ -1,0 +1,63 @@
+@use 'sass:map';
+@use './mixins.scss' as *;
+
+// 颜色类型
+$types: background, disabled, hover, normal, click;
+
+// 主题颜色
+$theme-color: ()!default;
+$theme-color: map.deep-merge(
+  (
+    'brand-background': rgba(239, 244, 255, 1),
+    'brand-disabled': rgba(163, 189, 249, 1),
+    'brand-hover': rgba(64, 121, 252, 1),
+    'brand-normal': rgba(36, 75, 241, 1),
+    'brand-click': rgba(9, 69, 205, 1)
+  ),
+  $theme-color
+);
+
+// 错误颜色
+$error-color: () !default;
+$error-color: map.deep-merge(
+  (
+    'error-background': rgba(254, 239, 240, 1),
+    'error-disabled': rgba(251, 176, 181, 1),
+    'error-hover': rgba(249, 145, 152, 1),
+    'error-normal': rgba(247, 89, 100, 1),
+    'error-click': rgba(254, 239, 240, 1)
+  ),
+  $error-color
+);
+
+// 成功颜色
+$success-color: ()!default;
+$success-color: map.deep-merge(
+  (
+   'success-background': rgba(233, 246, 242, 1),
+   'success-disabled': rgba(146, 213, 189, 1),
+   'success-hover': rgba(102, 196, 162, 1),
+   'success-normal': rgba(37, 171, 123, 1),
+   'success-click': rgba(27, 128, 92, 1)
+  ),
+  $success-color
+);
+
+// 警告颜色
+$warning-color: ()!default;
+$warning-color: map.deep-merge(
+  (
+    'warning-background': rgba(255, 243, 234, 1),
+    'warning-disabled': rgba(255, 198, 152, 1),
+    'warning-hover': rgba(255, 175, 111, 1),
+    'warning-normal': rgba(255, 141, 50, 1),
+    'warning-click': rgba(217, 119, 42, 1)
+  ),
+  $warning-color
+);
+
+// 获取常用的几种颜色，各组合下的 normal
+$color-theme: map.get($theme-color, 'brand-normal');
+$color-error: map.get($error-color, 'error-normal');
+$color-success: map.get($success-color,'success-normal');
+$color-warning: map.get($warning-color, 'warning-normal');

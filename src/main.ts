@@ -1,6 +1,6 @@
 
-import ElementPlus from 'element-plus/es'
-import './css/index.scss'
+import ElementPlus from 'element-plus'
+import './style/index.scss'
 import Store from './librarys/store'
 import validate from './librarys/validate'
 export * from './librarys/utils'

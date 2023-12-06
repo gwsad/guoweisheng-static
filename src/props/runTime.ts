@@ -64,7 +64,17 @@ export const buildProp = (
   return epProp
 }
 
-
+// Object.entries 将 props 转换为二维数组
+// 将二维数组以 key option 的形式取出，实际上就是拿到了 props 中的参数的 key 和 value
+// 将 value 通过 buildProp 函数处理一下
+// fromPairs 又将二维数组转换成 object,实际是一种对props进行进一步处理，方便在组件中使用
+// 将props中每个参数都变为
+// {
+//   type: props.type,
+//   required: false,
+//   validator: props.value,
+//   [epPropKey]: true,
+// }
 export const buildProps = (
   props: Record<string, any>
 )=> fromPairs(

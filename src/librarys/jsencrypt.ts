@@ -3,7 +3,7 @@
 import { md5 } from "../compression/md5.js"
 import { JSEncrypt } from "../compression/jsencrypt.js"
 import { isArray, isObject, isString, isUndefined } from "./vueShared";
-import { NOOP } from 'vue'
+import { NOOP } from '@vue/shared'
 
 const isIp = /^(\d+)\.(\d+)\.(\d+)\.(\d+)$/;
 

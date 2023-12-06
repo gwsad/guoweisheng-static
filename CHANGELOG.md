@@ -1,5 +1,20 @@
 ## 更新日志
 
+### 2.0.1
+
+_2023-12-5_
+
+#### Features
+
+- 新增：`@src/style/common/config.scss` 组件库配置包括（命名空间及 BEM 命名规范）;
+- 新增：`@src/style/common/mixins.scss` sass 工具函数库;
+- 新增：`@src/style/common/var.scss` sass 变量库;
+- 新增：`@src/style/button.scss` 新增 button 组件样式;
+
+#### Fix
+
+- 修改 ：NOOP 函数导入;
+
 ### 2.0.0
 
 _2023-12-5_
