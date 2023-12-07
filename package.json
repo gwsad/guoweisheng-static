@@ -4,7 +4,8 @@
   "main": "src/main.ts",
   "private": false,
   "scripts": {
-    "build": "cross-env NODE_ENV=production vite build"
+    "build": "cross-env NODE_ENV=production vite build",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -29,7 +30,7 @@
     "@vitejs/plugin-vue": "^2.2.2",
     "@vue/compiler-sfc": "^3.2.31",
     "element-plus": "2.2.27",
-
+    "husky": "^8.0.1",
     "cross-env": "5.2.0",
     "eslint-plugin-vue": "^9.7.0",
     "mitt": "^3.0.0",
