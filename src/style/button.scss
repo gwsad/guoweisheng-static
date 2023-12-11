@@ -1,7 +1,77 @@
 @use 'sass:map';
+@use './common/root';
 @use './common/mixins' as *;
 @use './common/var' as *;
+@use './common/function' as *;
+
+// 循环生成 button 组件的 css 变量
+// getCssVar('button', 'text-color') => var(--el-button-text-color)
+$button: () !default;
+$button: map.merge(
+  (
+    'font-weight': getCssVar('font-weight-primary'),
+    'border-color': getCssVar('border-color'),
+    'bg-color': getCssVar('fill-color', 'blank'),
+    'text-color': getCssVar('text-color', 'regular'),
+    'disabled-text-color': getCssVar('disabled-text-color'),
+    'disabled-bg-color': getCssVar('fill-color', 'blank'),
+    'disabled-border-color': getCssVar('border-color-light'),
+    'hover-text-color': getCssVar('color-primary'),
+    'hover-bg-color': getCssVar('option-bg-color-hover'),
+    'active-text-color': getCssVar('button-hover-text-color'),
+    'active-border-color': getCssVar('color-primary'),
+    'active-color': getCssVar('text-color', 'primary'),
+    'active-bg-color': getCssVar('option-bg-color-active')
+  ),
+  $button
+);
+// 初始化按钮样式
+@include b(button) {
+  @include set-component-css-var('button', $button);
+}
 
 @include b(button) {
-  background: $color-theme;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  line-height: 1;
+  // height: map.get($input-height, 'default');
+  white-space: nowrap;
+  cursor: pointer;
+  color: getCssVar('button', 'text-color');
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  transition: 0.1s;
+  font-weight: getCssVar('button', 'font-weight');
+  user-select: none;
+  vertical-align: middle;
+  -webkit-appearance: none;
+  background-color: getCssVar('button', 'bg-color');
+  border: getCssVar('border');
+  border-color: getCssVar('button', 'border-color');
+
+
+  &:hover,
+  &:focus {
+    color: getCssVar('button', 'hover', 'text-color');
+    border-color: getCssVar('button', 'hover', 'border-color');
+    background-color: getCssVar('button', 'hover', 'bg-color');
+    outline: none;
+  }
+
+  &:active {
+    color: getCssVar('button', 'active', 'text-color');
+    border-color: getCssVar('button', 'active', 'border-color');
+    background-color: getCssVar('button', 'active', 'bg-color');
+    outline: none;
+  }
+
+  @include button-size(
+    map.get($button-padding-vertical, 'default'),
+    map.get($button-padding-horizontal, 'default'),
+    map.get($button-font-size, 'default'),
+    map.get($button-border-radius, 'default')
+  );
 }

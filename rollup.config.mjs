@@ -1,5 +1,6 @@
 
 import resolve from '@rollup/plugin-node-resolve';
+import eslint from '@rollup/plugin-eslint'
 
 export default {
   input: 'src/main.js',
@@ -9,6 +10,12 @@ export default {
     name: 'EesaStatic', // 指定 UMD 构建模式下的全局变量名
   },
   plugins: [
+    eslint({
+      throwOnError: true,
+      throwOnWarning: true,
+      include: ['src/**'],
+      exclude: ['node_modules/**']
+    }),
     resolve()  // 添加这个插件配置
   ]
 };

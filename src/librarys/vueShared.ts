@@ -2,7 +2,7 @@
  * vueShared工具类函数
  * **/
 import { isArray, isObject, isString } from '@vue/shared'
-import { isNil } from 'lodash-unified'
+import { isNil } from './lodash'
 
 export { hasOwn } from '@vue/shared'
 

@@ -1,5 +1,5 @@
 import type { PropType, Component } from 'vue'
-import { fromPairs } from 'lodash-unified'
+import { fromPairs } from '../librarys/lodash'
 import { isObject, hasOwn } from '../librarys/vueShared'
 
 export const definePropType = <T>(val: any): PropType<T> => val
