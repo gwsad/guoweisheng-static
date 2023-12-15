@@ -1,11 +1,13 @@
 {
   "name": "@guoweisheng/static",
-  "version": "0.0.1",
+  "version": "2.0.1",
   "main": "src/main.ts",
   "private": false,
   "scripts": {
-    "build": "cross-env NODE_ENV=production vite build",
-    "prepare": "husky install"
+    "build": "vite build",
+    "prepare": "husky install",
+    "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx,.md,.json --max-warnings 0 --cache",
+    "lint:fix": "pnpm run lint --fix"
   },
   "dependencies": {
     "@ctrl/tinycolor": "^3.4.1",
@@ -41,6 +43,6 @@
     "vue-tsc": "^0.31.4"
   },
   "lint-staged": {
-    "*.{js,jsx,md}": "eslint --fix"
+    "*.{vue,js,ts,jsx,tsx,md}": "eslint --fix"
   }
 }
