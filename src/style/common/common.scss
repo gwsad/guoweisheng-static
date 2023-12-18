@@ -8,7 +8,7 @@
   @include set-css-var-value('color-black', $color-black);
 
   // get rgb
-  @each $type in (primary, success, warning, error) {
+  @each $type in (primary, success, warning, danger, info) {
     @include set-css-color-type($type);
   }
 
@@ -30,7 +30,6 @@
   // refer to this website to get the bezier motion function detail
   // https://cubic-bezier.com/#p1,p2,p3,p4 (change px as your function parameter)
   @include set-component-css-var('transition-duration', $transition-duration);
-  @include set-component-css-var('color-info', $transition-duration);
 
 
   @include set-component-css-var('transition-function', $transition-function);
@@ -47,6 +46,25 @@
   // color-scheme
   // Background --el-bg-color-#{$type}
   @include set-component-css-var('bg-color', $bg-color);
+  // hover base
+  @each $style in (bg,border){
+    @each $type in (primary, success, warning, danger, info) {
+      @include set-style-css-var($style,'hover',$type,$hover-background)
+    }
+  }
+  // active base
+  @each $style in (bg,border){
+    @each $type in (primary, success, warning, danger, info) {
+      @include set-style-css-var($style,'active',$type,$click-background)
+    }
+  }
+  // Disable base
+  @each $style in (bg,border){
+    @each $type in (primary, success, warning, danger, info) {
+      @include set-style-css-var($style,'disabled',$type,$disabled-background)
+    }
+  }
+
   // --el-text-color-#{$type}
   @include set-component-css-var('text-color', $text-color);
   // --el-border-color-#{$type}
@@ -57,8 +75,6 @@
   // Box-shadow
   // --el-box-shadow-#{$type}
   @include set-component-css-var('box-shadow', $box-shadow);
-  // Disable base
-  @include set-component-css-var('disabled', $disabled);
 
   // overlay & mask
   @include set-component-css-var('overlay-color', $overlay-color);
@@ -67,7 +83,6 @@
   // Border
   @include set-css-var-value('border-width', $border-width);
   @include set-css-var-value('border-style', $border-style);
-  @include set-css-var-value('border-color-hover', $border-color-hover);
   @include set-css-var-value(
     'border',
     getCssVar('border-width') getCssVar('border-style')

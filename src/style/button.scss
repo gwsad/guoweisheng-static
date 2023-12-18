@@ -4,6 +4,7 @@
 @use './common/var' as *;
 @use './common/function' as *;
 
+
 // 循环生成 button 组件的 css 变量
 // getCssVar('button', 'text-color') => var(--el-button-text-color)
 $button: () !default;
@@ -12,16 +13,16 @@ $button: map.merge(
     'font-weight': getCssVar('font-weight-primary'),
     'border-color': getCssVar('border-color'),
     'bg-color': getCssVar('fill-color', 'blank'),
-    'text-color': getCssVar('text-color', 'regular'),
+    'text-color': getCssVar('text-color-regular'),
     'disabled-text-color': getCssVar('disabled-text-color'),
     'disabled-bg-color': getCssVar('fill-color', 'blank'),
     'disabled-border-color': getCssVar('border-color-light'),
-    'hover-text-color': getCssVar('color-primary'),
-    'hover-bg-color': getCssVar('option-bg-color-hover'),
-    'active-text-color': getCssVar('button-hover-text-color'),
-    'active-border-color': getCssVar('color-primary'),
-    'active-color': getCssVar('text-color', 'primary'),
-    'active-bg-color': getCssVar('option-bg-color-active')
+    'hover-text-color': getCssVar('text-color-hover'),
+    'hover-bg-color': getCssVar('bg-color'),
+    'hover-border-color': getCssVar('border-color-hover'),
+    'active-text-color': getCssVar('text-color-active'),
+    'active-bg-color': getCssVar('bg-color'),
+    'active-border-color': getCssVar('border-color-active')
   ),
   $button
 );
@@ -74,4 +75,32 @@ $button: map.merge(
     map.get($button-font-size, 'default'),
     map.get($button-border-radius, 'default')
   );
+
+  @each $type in (primary, success, warning, danger, info) {
+    @include m($type) {
+      @include button-variant($type);
+    }
+  }
+
+  @include when(disabled) {
+    &,
+    &:hover,
+    &:focus {
+      color: getCssVar('button','disabled', 'text-color');
+      cursor: not-allowed;
+      background-image: none;
+      background-color: getCssVar('button','disabled', 'bg-color');
+      border-color: getCssVar('button','disabled', 'border-color');
+    }
+  }
+}
+
+.es-button.is-disabled.es-button--info{
+  color: $color-black;
+  --es-button-active-text-color: $color-black;
+  &,
+  &:hover,
+  &:focus {
+    color: rgba(0,0,0,0.26);
+  }
 }

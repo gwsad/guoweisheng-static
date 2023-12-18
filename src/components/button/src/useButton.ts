@@ -17,8 +17,8 @@ export const useButton = (
   emit: SetupContext<ButtonEmits>['emit']
 ) => {
   const buttonGroupContext = inject(buttonGroupContextKey, undefined)
-  const _size = computed(() => buttonGroupContext?.size)
-  const _disabled = computed(() => buttonGroupContext?.disabled)
+  const _size = computed(() => props.size || buttonGroupContext?.size)
+  const _disabled = computed(() => props.disabled || buttonGroupContext?.disabled)
   const _ref = ref<HTMLButtonElement>()
 
   const _type = computed(() => props.type || buttonGroupContext?.type || '')

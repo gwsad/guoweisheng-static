@@ -9,6 +9,7 @@
   @return joinVarName($args);
 }
 
+// 生成例如 --el-button-text-color 的变量名
 @function joinVarName($list) {
   $name: '--' + $namespace;
   @each $item in $list {

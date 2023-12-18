@@ -57,7 +57,6 @@ const ns = useNamespace('button')
 
 
 const { _ref, _size, _type, _disabled } = useButton(props,emit)
-console.log('button props', _type)
 
 defineExpose({
   /** @description button html element */

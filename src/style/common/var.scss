@@ -1,6 +1,8 @@
 @use 'sass:map';
 @use './function.scss' as *;
 
+// 色彩只有 4 中 primary, success, warning, danger, info
+
 // 颜色类型
 $types: background, disabled, hover, normal, click;
 
@@ -18,16 +20,16 @@ $theme-color: map.deep-merge(
 );
 
 // 错误颜色
-$error-color: () !default;
-$error-color: map.deep-merge(
+$danger-color: () !default;
+$danger-color: map.deep-merge(
   (
-    'error-background': rgba(254, 239, 240, 1),
-    'error-disabled': rgba(251, 176, 181, 1),
-    'error-hover': rgba(249, 145, 152, 1),
-    'error-normal': rgba(247, 89, 100, 1),
-    'error-click': rgba(254, 239, 240, 1)
+    'danger-background': rgba(254, 239, 240, 1),
+    'danger-disabled': rgba(251, 176, 181, 1),
+    'danger-hover': rgba(249, 145, 152, 1),
+    'danger-normal': rgba(247, 89, 100, 1),
+    'danger-click': rgba(187, 67, 75, 1)
   ),
-  $error-color
+  $danger-color
 );
 
 // 成功颜色
@@ -56,13 +58,27 @@ $warning-color: map.deep-merge(
   $warning-color
 );
 
+// 信息颜色
+$info-color: ()!default;
+$info-color: map.deep-merge(
+  (
+    'info-background': rgba(242,243,245, 1),
+    'info-disabled': rgba(242,243,245, 1),
+    'info-hover': rgba(232, 234, 239, 1),
+    'info-normal': rgba(242, 243, 245, 1),
+    'info-click': rgba(202, 205, 216, 1)
+  ),
+  $info-color
+);
+
 // 获取常用的几种颜色，各组合下的 normal
 $color-theme: map.get($theme-color, 'brand-normal');
-$color-error: map.get($error-color, 'error-normal');
+$color-danger: map.get($danger-color, 'danger-normal');
 $color-success: map.get($success-color,'success-normal');
 $color-warning: map.get($warning-color, 'warning-normal');
+$color-info: map.get($info-color, 'info-normal');
 
-// Color 定义 4 种颜色 primary, success, warning, error
+// Color 定义 4 种颜色 primary, success, warning, danger, info
 $colors: () !default;
 $colors: map.deep-merge(
   (
@@ -71,7 +87,8 @@ $colors: map.deep-merge(
     'primary': $color-theme,
     'success': $color-success,
     'warning': $color-warning,
-    'error': $color-error
+    'info': $color-info,
+    'danger': $color-danger
   ),
   $colors
 );
@@ -93,6 +110,43 @@ $font-size: map.merge(
   $font-size
 );
 
+// 移入背景色
+$hover-background: ()!default;
+$hover-background: map.deep-merge(
+  (
+    'primary': map.get($theme-color, 'brand-hover'),
+    'success': map.get($success-color, 'success-hover'),
+    'warning': map.get($warning-color, 'warning-hover'),
+    'info': map.get($info-color, 'info-hover'),
+    'danger': map.get($danger-color, 'danger-hover')
+  ),
+  $hover-background
+);
+// 点击背景色
+$click-background: ()!default;
+$click-background: map.deep-merge(
+  (
+    'primary': map.get($theme-color, 'brand-click'),
+    'success': map.get($success-color, 'success-click'),
+    'warning': map.get($warning-color, 'warning-click'),
+    'info': map.get($info-color, 'info-click'),
+    'danger': map.get($danger-color, 'danger-click')
+  ),
+  $click-background
+);
+//   禁用背景色
+$disabled-background: ()!default;
+$disabled-background: map.deep-merge(
+  (
+    'primary': map.get($theme-color, 'brand-disabled'),
+   'success': map.get($success-color,'success-disabled'),
+    'warning': map.get($warning-color, 'warning-disabled'),
+    'info': map.get($info-color, 'info-disabled'),
+    'danger': map.get($danger-color, 'danger-disabled')
+  ),
+  $disabled-background
+);
+
 // 字体
 $font-family: () !default;
 $font-family: map.merge(
@@ -107,10 +161,12 @@ $text-color: () !default;
 $text-color: map.merge(
   (
     'primary': #303133,
-    'regular': #606266,
+    'regular': rgba(0,0,0,0.6),
+    'hover': #4079FC,
+    'active': #0945CD,
     'secondary': #909399,
     'placeholder': #a8abb2,
-    'disabled': yellow,
+    'disabled': rgba(0,0,0,0.26),
   ),
   $text-color
 );
@@ -136,6 +192,8 @@ $border-color: () !default;
 $border-color: map.merge(
   (
     '': #dcdfe6,
+    'hover': #4079FC,
+    'active': #0945CD,
     'light': #e4e7ed,
     'lighter': #ebeef5,
     'extra-light': #f2f6fc,
