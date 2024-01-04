@@ -59,7 +59,7 @@ const handleParams = params => {
           res.push(`${key.toUpperCase()}=${params[key].split(' ').join('')}` || '')
         } else if (typeof params[key] === 'object') {
           if (Array.isArray(params[key])) {
-            res.push(`${key.toUpperCase()}=[${transformArray(params[key])}]` || '')
+            res.push(`${key.toUpperCase()}=[${transformArray(params[key]) === '{}' ? '' : transformArray(params[key])}]` || '')
           } else {
             res.push(`${key.toUpperCase()}=${transformArray(params[key])}` || '')
           }
@@ -80,12 +80,20 @@ function transformArray(arr) {
       const keyValuePairs = [];
       for (const key in obj) {
         if (obj.hasOwnProperty(key)) {
-          obj[key] !== undefined && keyValuePairs.push(`${key}=${Array.isArray(obj[key]) ? '[' + transformArray(obj[key]) + ']' : obj[key]}`);
+          obj[key] !== undefined && keyValuePairs.push(`${key}=${Array.isArray(obj[key]) ? `[${transformArray(obj[key])}]` : obj[key]}`);
         }
       }
-      return typeof obj === 'object' ? `{${keyValuePairs.join(',').split(' ').join('').replaceAll('https=', 'https:').replaceAll('http=', 'http:')}}` : obj;
+      return typeof obj === 'object' ? `{${keyValuePairs.join(',').replaceAll(' ','').replaceAll('https=', 'https:').replaceAll('http=', 'http:')}}` : obj;
     });
   }else{
+    // 判断是不是对象
+    if (typeof arr === 'object') {
+      let keyValuePairs = ''
+      for (let key in arr) {
+        keyValuePairs += `${key}=${Array.isArray(arr[key]) ? '[' + arr[key] + ']' : arr[key] },`
+      }
+      return `{${keyValuePairs.slice(0, -1)}}`
+    }
     return '';
   }
 }
@@ -114,7 +122,6 @@ function getUrlParameters(url) {
   if (parameters['url']) {
     parameters['url'] = decodeURIComponent(parameters['url']);
   }
-  console.log('12312312',parameters)
   return parameters;
 }
 
