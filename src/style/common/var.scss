@@ -83,7 +83,7 @@ $colors: () !default;
 $colors: map.deep-merge(
   (
     'white': #ffffff,
-    'black': #000000,
+    'black': rgba(0,0,0,0.9),
     'primary': $color-theme,
     'success': $color-success,
     'warning': $color-warning,

@@ -96,11 +96,12 @@ $button: map.merge(
 }
 
 .es-button.is-disabled.es-button--info{
-  color: $color-black;
-  --es-button-active-text-color: $color-black;
   &,
   &:hover,
   &:focus {
     color: rgba(0,0,0,0.26);
   }
+}
+.es-button.es-button--info{
+  color: $color-black;
 }

@@ -1,5 +1,4 @@
 import {buildProps, definePropType, iconPropType } from '../../../props/runTime'
-import { Loading } from '@element-plus/icons-vue'
 import type { Component, ExtractPropTypes } from 'vue'
 
 export const buttonTypes = [
@@ -37,17 +36,6 @@ export const buttonProps = buildProps({
    */
   icon: {
     type: iconPropType,
-  },
-  /**
-   * @description determine whether it's loading
-   */
-  loading: Boolean,
-  /**
-   * @description customize loading icon component
-   */
-  loadingIcon: {
-    type: iconPropType,
-    default: () => Loading,
   },
   /**
    * @description determine whether it's a plain button
